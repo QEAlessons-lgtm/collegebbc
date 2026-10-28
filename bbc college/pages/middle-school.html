@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دروسي للمتوسط</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{--accent:#c96b2c;--accent2:#f0a35b;--ink:#4b382c;--paper:#fff8ee;--line:#ead4b7}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#fff3e2 0%,#f7e5cc 48%,#fffaf2 100%);color:var(--ink);font-family:'Cairo',sans-serif}
+.container{width:min(950px,calc(100% - 28px));margin:32px auto 55px;text-align:center}
+.page-header h1{font-size:clamp(1.8rem,5vw,2.6rem);font-weight:900;color:var(--accent);margin:12px 0 8px}
+.subtitle{color:#92765c;margin:0 0 28px}
+.back-btn{display:inline-block;float:right;color:var(--accent);text-decoration:none;font-weight:700;margin:0 0 14px}
+.year-section{background:#fff;border:2px dashed var(--accent2);border-radius:20px;margin:16px 0;box-shadow:0 7px 20px #8a55200d;overflow:hidden;text-align:right;transition:.2s}
+.year-section:hover{border-color:var(--accent2)}
+.year-header{padding:22px 25px;display:flex;align-items:center;justify-content:space-between;gap:14px;cursor:pointer;background:#fff;font-size:1.2rem;font-weight:800;user-select:none}
+.year-header>div{display:flex;align-items:center;justify-content:center;gap:12px;flex:1;text-align:center}
+.main-icon{color:var(--accent2);font-size:1.8rem}.arrow-icon{color:var(--accent2);transition:transform .25s}
+.year-section.active .arrow-icon,.subject-item.active .subject-arrow{transform:rotate(180deg)}
+.subjects-list{max-height:0;overflow:hidden;padding:0 24px;background:#fff8ee;transition:max-height .35s ease,padding .35s ease}
+.year-section.active .subjects-list{max-height:9000px;padding:16px 24px 22px;border-top:1px dashed #e4c49f}
+.subject-item{margin:10px 0;border:1.5px dashed #e4a66d;border-radius:13px;background:white;overflow:hidden}
+.subject-header{padding:14px 17px;display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;font-weight:700;font-size:1.04rem;transition:.2s}
+.subject-header:hover,.subject-item.active .subject-header{background:#fff0dc;color:var(--accent)}
+.subject-arrow{color:var(--accent2);transition:transform .25s}
+.lessons-list{max-height:0;overflow:hidden;padding:0 14px;background:#fffaf3;transition:max-height .3s ease,padding .3s ease}
+.subject-item.active .lessons-list{max-height:2500px;padding:10px 14px;border-top:1px dashed #e4c49f}
+.lesson-item{margin:7px 0}.lesson-item a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 13px;border:1.5px dashed #e4a66d;border-radius:9px;background:#fff;color:#5c4737;text-decoration:none;font-weight:600;text-align:right;transition:.2s}
+.lesson-item a:hover{background:var(--accent);color:white;border-color:var(--accent);transform:translateX(-3px)}
+.lesson-item a i{color:var(--accent2);flex-shrink:0}.lesson-item a:hover i{color:white}
+.empty-note{font-size:.9rem;color:#80918e;padding:8px}
+footer{color:#9b826b;font-size:.85rem;margin-top:28px}
+
+/* لافتة وطنية متناسقة مع ألوان المنصة */
+.november-banner{
+  width:100%;
+  margin:8px auto 22px;
+  overflow:hidden;
+  border:2px solid rgba(201,107,44,.22);
+  border-radius:20px;
+  box-shadow:0 10px 26px rgba(91,57,29,.12);
+  background:#fff8ee;
+}
+.november-banner img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:300px;
+  object-fit:cover;
+  object-position:center;
+}
+@media(max-width:600px){
+  .november-banner{border-radius:14px;margin:6px auto 18px;}
+  .november-banner img{max-height:190px;object-fit:cover;}
+}
+@media(max-width:600px){.container{margin:20px auto}.year-header{padding:18px 14px;font-size:1.05rem}.main-icon{font-size:1.5rem}.year-section.active .subjects-list{padding:12px}.subject-header{font-size:.97rem;padding:12px}.lessons-list{padding-left:8px;padding-right:8px}.subject-item.active .lessons-list{padding:8px}.lesson-item a{font-size:.9rem;padding:10px}}
+
+/* توافق محسّن مع الهواتف والأجهزة اللوحية والحواسيب */
+html{ -webkit-text-size-adjust:100%; text-size-adjust:100%; scroll-behavior:smooth; }
+body{ min-width:0; min-height:100vh; min-height:100dvh; overflow-wrap:anywhere; }
+.container{ width: min(950px, calc(100% - 32px)); padding-inline: 0; }
+.year-section,.subject-item,.lesson-item,.year-header,.subject-header,.lesson-item a{min-width:0;}
+.year-header,.subject-header{touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+.year-header{min-height:56px;}
+.subject-header{min-height:48px;}
+.lesson-item a{min-height:46px;overflow-wrap:anywhere;}
+.year-header>div,.subject-header>span,.lesson-item a span{min-width:0;overflow-wrap:anywhere;}
+img,video,iframe{max-width:100%;}
+@media (max-width: 768px){
+  .container{width:calc(100% - 24px);margin:18px auto 32px;}
+  .subtitle{font-size: .98rem;line-height:1.8;margin-bottom:20px;}
+  .year-section{border-radius:16px;margin:13px 0;}
+  .year-header{padding:16px 14px;gap:8px;font-size:1rem;}
+  .year-header>div{gap:8px;}
+  .subjects-list{padding-left:12px;padding-right:12px;}
+  .year-section.active .subjects-list{padding:10px 12px 16px;}
+  .subject-header{gap:8px;padding:12px 10px;}
+  .lesson-item a{gap:8px;padding:11px 10px;line-height:1.7;}
+}
+@media (max-width: 420px){
+  .container{width:calc(100% - 18px);margin-top:12px;}
+  .back-btn{float:none;display:block;text-align:right;margin-bottom:10px;}
+  .page-header h1{font-size:clamp(1.45rem,7vw,1.9rem);line-height:1.5;}
+  .subtitle{font-size:.9rem;}
+  .year-header{padding:14px 10px;font-size:.94rem;}
+  .main-icon{font-size:1.25rem;}
+  .year-section.active .subjects-list{padding:8px;}
+  .subject-item{margin:8px 0;border-radius:11px;}
+  .subject-header{font-size:.9rem;padding:11px 8px;}
+  .lesson-item a{font-size:.86rem;padding:10px 8px;}
+  footer{font-size:.78rem;padding-bottom:env(safe-area-inset-bottom);}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back-btn" href="../index.html"><i class="fas fa-arrow-right"></i> العودة للرئيسية</a>
+<div style="clear:both"></div>
+
+<!-- لافتة ذكرى أول نوفمبر -->
+<section class="november-banner" aria-label="ذكرى أول نوفمبر 1954">
+  <img
+    src="https://i.ibb.co/r246sPMP/file-000000008e8881f6b762b3ebbe94176d.png"
+    alt="ذكرى أول نوفمبر 1954"
+    loading="eager">
+</section>
+
+<header class="page-header">
+<h1><i class="fas fa-graduation-cap"></i> دروسي للمتوسط</h1>
+<p class="subtitle">اختَر السنة الدراسية، ثم المادة، ثم الدرس</p>
+</header>
+
+<section class="year-section">
+<div class="year-header" role="button" tabindex="0" onclick="toggleYear(this)" onkeydown="keyboardToggle(event,this)">
+<div><i class="fas fa-book-open main-icon"></i> الأولى متوسط (1AM)</div><i class="fas fa-chevron-down arrow-icon"></i>
+</div>
+<div class="subjects-list">
+<div class="subject-item">
+<div class="subject-header" role="button" tabindex="0" onclick="toggleSubject(event,this)" onkeydown="keyboardSubject(event,this)"><span><i class="fas fa-landmark"></i> التاريخ</span><i class="fas fa-chevron-down subject-arrow"></i></div>
+<div class="lessons-list"><div class="lesson-item"><a href="https://drive.google.com/file/d/1WV6PIX0wNjb9wNDXD8ANLYXXMH8T-i8x/view?usp=drivesdk" target="_blank" rel="noopener"><span>الخطوات المنهجية لدراسة الآثار القديمة</span><i class="fas fa-file-pdf"></i></a></div></div>
+</div>
+<div class="subject-item">
+<div class="subject-header" role="button" tabindex="0" onclick="toggleSubject(event,this)" onkeydown="keyboardSubject(event,this)"><span><i class="fas fa-mosque"></i> التربية الإسلامية</span><i class="fas fa-chevron-down subject-arrow"></i></div>
+<div class="lessons-list"><div class="lesson-item"><a href="https://drive.google.com/file/d/1tHs3LjZE6jz70WNDUqocnsFNIvhfoMr3/view?usp=drivesdk" target="_blank" rel="noopener"><span>الدرس الأول</span><i class="fas fa-file-pdf"></i></a></div></div>
+</div>
+<div class="subject-item">
+<div class="subject-header" role="button" tabindex="0" onclick="toggleSubject(event,this)" onkeydown="keyboardSubject(event,this)"><span><i class="fas fa-earth-africa"></i> الجغرافيا</span><i class="fas fa-chevron-down subject-arrow"></i></div>
+<div class="lessons-list"><div class="lesson-item"><a href="https://drive.google.com/file/d/1PdgprTwy7kS2hPxe_iiBdwn42Sjc_Vp6/view?usp=drivesdk" target="_blank" rel="noopener"><span>الإحداثيات الجغرافية</span><i class="fas fa-file-pdf"></i></a></div></div>
+</div>
+<div class="subject-item">
+<div class="subject-header" role="button" tabindex="0" onclick="toggleSubject(event,this)" onkeydown="keyboardSubject(event,this)"><span><i class="fas fa-scale-balanced"></i> التربية المدنية</span><i class="fas fa-chevron-down subject-arrow"></i></div>
+<div class="lessons-list"><div class="lesson-item"><a href="https://drive.google.com/file/d/1Ap6x-_WzbENqc54ixvTraer8VfM5WpEp/view?usp=drivesdk" target="_blank" rel="noopener"><span>التنوع الثقافي</span><i class="fas fa-file-pdf"></i></a></div></div>
+</div>
+<div class="subject-item">
+<div class="subject-header" role="button" tabindex="0" onclick="toggleSubject(event,this)" onkeydown="keyboardSubject(event,this)"><span><i class="fas fa-leaf"></i> العلوم الطبيعية</span><i class="fas fa-chevron-down subject-arrow"></i></div>
+<div class="lessons-list"><div class="lesson-item"><a href="https://drive.google.com/file/d/1krKR6bYMwaHZYqeYl7yEbK-it4RW5Gyu/view?usp=drivesdk" target="_blank" rel="noopener"><span>الإنسان والصحة</span><i class="fas fa-file-pdf"></i></a></div></div>
+</div>
+<div class="subject-item">
+<div class="subject-header" role="button" tabindex="0" onclick="toggleSubject(event,this)" onkeydown="keyboardSubject(event,this)"><span><i class="fas fa-bolt"></i> العلوم الفيزيائية</span><i class="fas fa-chevron-down subject-arrow"></i></div>
+<div class="lessons-list"><div class="lesson-item"><a href="https://drive.google.com/file/d/1u4mvIZyRWzkY-wodsi2O8AOLxcYYh6nL/view?usp=drivesdk" target="_blank" rel="noopener"><span>الدارة الكهربائية</span><i class="fas fa-file-pdf"></i></a></div></div>
+</div>
+</div>
+</section>
+
+<section class="year-section">
+<div class="year-header" role="button" tabindex="0" onclick="toggleYear(this)" onkeydown="keyboardToggle(event,this)">
+<div><i class="fas fa-book main-icon"></i> الثانية متوسط (2AM)</div><i class="fas fa-chevron-down arrow-icon"></i>
+</div>
+<div class="subjects-list">
+<div class="subject-item">
+<div class="subject-header" role="button" tabindex="0" onclick="toggleSubject(event,this)" onkeydown="keyboardSubject(event,this)"><span><i class="fas fa-landmark"></i> التاريخ</span><i class="fas fa-chevron-down subject-arrow"></i></div>
+<div class="lessons-list">
+<div class="lesson-item"><a href="https://drive.google.com/file/d/1oAc6EqOJAFYiIVci-0_1DgEWDkqe1Fbd/view?usp=drivesdk" target="_blank" rel="noopener"><span>دراسة الوثيقة التاريخية</span><i class="fas fa-file-pdf"></i></a></div>
+<div class="lesson-item"><a href="https://drive.google.com/file/d/18B0EjKZsX-T_LY-X7YnwrjMpd2A-dq5g/view?usp=drivesdk" target="_blank" rel="noopener"><span>ميادين تحوّل المجتمع الإسلامي</span><i class="fas fa-file-pdf"></i></a></div>
+</div></div>
+<div class="subject-item">
+<div class="subject-header" role="button" tabindex="0" onclick="toggleSubject(event,this)" onkeydown="keyboardSubject(event,this)"><span><i class="fas fa-earth-africa"></i> الجغرافيا</span><i class="fas fa-chevron-down subject-arrow"></i></div>
+<div class="lessons-list"><div class="lesson-item"><a href="https://drive.google.com/file/d/1JtesSzUW-J8c-iKaW2T8TmXzIzqViIoJ/view?usp=drivesdk" target="_blank" rel="noopener"><span>درس الجغرافيا</span><i class="fas fa-file-pdf"></i></a></div></div>
+</div>
+<div class="subject-item">
+<div class="subject-header" role="button" tabindex="0" onclick="toggleSubject(event,this)" onkeydown="keyboardSubject(event,this)"><span><i class="fas fa-mosque"></i> التربية الإسلامية</span><i class="fas fa-chevron-down subject-arrow"></i></div>
+<div class="lessons-list"><div class="lesson-item"><a href="https://drive.google.com/file/d/1EbKR7yiDoEfCDn4SiD9ptCVKYU97ijxo/view?usp=drivesdk" target="_blank" rel="noopener"><span>الدروس الأولى</span><i class="fas fa-file-pdf"></i></a></div></div>
+</div>
+<div class="subject-item">
+<div class="subject-header" role="button" tabindex="0" onclick="toggleSubject(event,this)" onkeydown="keyboardSubject(event,this)"><span><i class="fas fa-leaf"></i> العلوم الطبيعية</span><i class="fas fa-chevron-down subject-arrow"></i></div>
+<div class="lessons-list">
+<div class="lesson-item"><a href="https://drive.google.com/file/d/1EaUcJLYusvReZDWfDosUCiQSV_wmT1qU/view?usp=drivesdk" target="_blank" rel="noopener"><span>الوسط الحي وخصائصه</span><i class="fas fa-file-pdf"></i></a></div>
+<div class="lesson-item"><a href="https://drive.google.com/file/d/1H-ApSgGHLrb8-rRabhlX_-pzbgUyJrcy/view?usp=drivesdk" target="_blank" rel="noopener"><span>العلاقة القائمة بين الكائنات الحية في أوساطها</span><i class="fas fa-file-pdf"></i></a></div>
+</div></div>
+</div>
+</section>
+
+<section class="year-section">
+<div class="year-header" role="button" tabindex="0" onclick="toggleYear(this)" onkeydown="keyboardToggle(event,this)">
+<div><i class="fas fa-graduation-cap main-icon"></i> الثالثة متوسط (3AM)</div><i class="fas fa-chevron-down arrow-icon"></i>
+</div>
+<div class="subjects-list">
+<div class="subject-item">
+<div class="subject-header" role="button" tabindex="0" onclick="toggleSubject(event,this)" onkeydown="keyboardSubject(event,this)"><span><i class="fas fa-landmark"></i> التاريخ</span><i class="fas fa-chevron-down subject-arrow"></i></div>
+<div class="lessons-list"><div class="lesson-item"><a href="https://drive.google.com/file/d/1iwiZbwt3AVupK0HemFu2Wtnzj-wF7nVY/view?usp=drivesdk" target="_blank" rel="noopener"><span>دراسة خريطة تاريخية</span><i class="fas fa-file-pdf"></i></a></div></div>
+</div>
+<div class="subject-item">
+<div class="subject-header" role="button" tabindex="0" onclick="toggleSubject(event,this)" onkeydown="keyboardSubject(event,this)"><span><i class="fas fa-earth-africa"></i> الجغرافيا</span><i class="fas fa-chevron-down subject-arrow"></i></div>
+<div class="lessons-list"><div class="lesson-item"><a href="https://drive.google.com/file/d/1cTUvMf-_fuXODkIerMj5DPwCMBfWADED/view?usp=drivesdk" target="_blank" rel="noopener"><span>الخصائص الطبيعية لقارة أوقيانوسيا</span><i class="fas fa-file-pdf"></i></a></div></div>
+</div>
+<div class="subject-item">
+<div class="subject-header" role="button" tabindex="0" onclick="toggleSubject(event,this)" onkeydown="keyboardSubject(event,this)"><span><i class="fas fa-leaf"></i> العلوم الطبيعية</span><i class="fas fa-chevron-down subject-arrow"></i></div>
+<div class="lessons-list"><div class="lesson-item"><a href="https://drive.google.com/file/d/1LDYLgCfZB9HBCFkTfEm429cKOWS7UUvX/view?usp=drivesdk" target="_blank" rel="noopener"><span>الديناميكية الداخلية للكرة الأرضية</span><i class="fas fa-file-pdf"></i></a></div></div>
+</div>
+<div class="subject-item">
+<div class="subject-header" role="button" tabindex="0" onclick="toggleSubject(event,this)" onkeydown="keyboardSubject(event,this)"><span><i class="fas fa-bolt"></i> العلوم الفيزيائية</span><i class="fas fa-chevron-down subject-arrow"></i></div>
+<div class="lessons-list"><div class="lesson-item"><a href="https://drive.google.com/drive/folders/1sWB71S-b-pQ5XiX6TSYhDRx2dhzA6ee-" target="_blank" rel="noopener"><span>دروس العلوم الفيزيائية</span><i class="fas fa-folder-open"></i></a></div></div>
+</div>
+</div>
+</section>
+<footer>منصة دروسي للطور المتوسط</footer>
+</div>
+<script>
+function toggleYear(header){
+ const section=header.parentElement;
+ document.querySelectorAll('.year-section').forEach(s=>{if(s!==section){s.classList.remove('active');s.querySelectorAll('.subject-item').forEach(x=>x.classList.remove('active'));}});
+ section.classList.toggle('active');
+}
+function toggleSubject(event,header){
+ event.stopPropagation();
+ const item=header.parentElement, list=item.parentElement;
+ Array.from(list.children).filter(s=>s.classList.contains('subject-item')).forEach(s=>{if(s!==item)s.classList.remove('active');});
+ item.classList.toggle('active');
+}
+function keyboardToggle(event,el){if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleYear(el);}}
+function keyboardSubject(event,el){if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSubject(event,el);}}
+</script>
+</body>
+</html>
